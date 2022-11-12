@@ -7,7 +7,7 @@ int	main(int argc, char **argv)
 	int	j;
 
 	if (argc == 1)
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *\n";
+		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
 	else
 	{
 		std::string	str;
@@ -22,6 +22,6 @@ int	main(int argc, char **argv)
 			if (argv[i + 1])
 				std::cout << " ";
 		}
-		std::cout << "\n";
+		std::cout << std::endl;
 	}
 }
