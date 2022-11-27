@@ -9,13 +9,13 @@ class PhoneBook {
 		PhoneBook();
 		~PhoneBook();
 
-	void	set_ncontact(int n);
+	void	add();
+	void	search();
 	int		get_ncontact();
 
 	private:
 		int		ncontact;
 		Contact contacts[8];
-
 };
 
 #endif
