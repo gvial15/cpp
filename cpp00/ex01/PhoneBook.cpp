@@ -1,5 +1,4 @@
 #include "PhoneBook.hpp"
-#include "Contact.hpp"
 
 // default constructor
 PhoneBook::PhoneBook(void) {
@@ -38,7 +37,7 @@ void	PhoneBook::add()
 	getline(std::cin, darkestSecret);
 	if (darkestSecret.empty()) return;
 	contacts[ncontact].setDarkestSecret(darkestSecret);
-	if (ncontact < 8)
+	if (ncontact < 7)
 		ncontact++;
 	std::cout << std::endl;
 }
