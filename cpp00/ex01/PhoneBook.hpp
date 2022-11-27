@@ -11,7 +11,6 @@ class PhoneBook {
 
 	void	add();
 	void	search();
-	int		get_ncontact();
 
 	private:
 		int		ncontact;

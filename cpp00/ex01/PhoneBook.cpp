@@ -87,8 +87,3 @@ void	PhoneBook::search()
 	getline(std::cin, n);
 	printContact(contacts[std::atoi(n.c_str())]);
 }
-
-// getters
-int	PhoneBook::get_ncontact() {
-	return (ncontact);
-}
