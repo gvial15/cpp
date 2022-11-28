@@ -9,10 +9,6 @@ int	main()
 	std::string *stringPTR = &str;
 	std::string	&stringREF = str;
 
-	// printf("memory address of str:             %p\n", &str);
-	// printf("memory address held by stringPTR:  %p\n", stringPTR);
-	// printf("memory address held by stringREF:  %p\n\n", &stringREF);
-
 	std::cout << "memory address of str:            " << &str << std::endl;
 	std::cout << "memory address held by stringPTR: " << &stringPTR << std::endl;
 	std::cout << "memory address held by stringREF: " << &stringREF << std::endl << std::endl;
