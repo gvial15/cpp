@@ -1,15 +1,14 @@
 #include "Weapon.hpp"
-#include <string>
 
-// construtor
+// construtors
+Weapon::Weapon() {}
+
 Weapon::Weapon(std::string type) {
 	type_ = type;
 }
 
 // destructor
-Weapon::~Weapon() {
-	std::cout << "Weapon" << type_ << "have been destroyed" << std::endl;
-};
+Weapon::~Weapon() {};
 
 const std::string	&Weapon::getType() {
 	return (type_);

@@ -2,7 +2,7 @@ SRCS = main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
 
 OBJS = $(SRCS:%cpp=%o)
 
-NAME = ex03
+NAME = weapon
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
