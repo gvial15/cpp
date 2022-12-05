@@ -1,4 +1,7 @@
-#include "Weapon.hpp"
+#ifndef HUMANA_HPP
+#define HUMANA_HPP
+
+# include "Weapon.hpp"
 
 class HumanA {
 	public:
@@ -9,3 +12,5 @@ class HumanA {
 
 	void	attack();
 };
+
+#endif
