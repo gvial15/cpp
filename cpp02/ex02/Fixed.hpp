@@ -10,9 +10,19 @@ class Fixed {
 		Fixed(const int n);
 		Fixed(const float n);
 		Fixed(const Fixed &oldFixed);
-		Fixed& operator= (const Fixed& other);
-		float operator* (const Fixed& other);
 		~Fixed();
+
+		bool	operator== (const Fixed& other);
+		bool	operator!= (const Fixed& other);
+		bool	operator<= (const Fixed& other);
+		bool	operator>= (const Fixed& other);
+		bool	operator< (const Fixed& other);
+		bool	operator> (const Fixed& other);
+		float	operator+ (const Fixed& other);
+		float	operator- (const Fixed& other);
+		float	operator* (const Fixed& other);
+		float	operator/ (const Fixed& other);
+		Fixed&	operator= (const Fixed& other);
 	
 	int		getRawBits(void) const;
 	void	setRawBits(int const raw);
