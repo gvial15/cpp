@@ -1,4 +1,6 @@
 #include "Fixed.hpp"
+#include <algorithm>
+#include <ostream>
 
 int	main()
 {
@@ -54,6 +56,23 @@ int	main()
 
 	std::cout << "\noperator / :\n";
 	std::cout << "3.45f / 4.44f: " << (e / c) << std::endl << std::endl;
+
+	std::cout << "min:\n";
+	std::cout << Fixed::min(c, e) << std::endl << std::endl;
+
+	std::cout << "max:\n";
+	std::cout << Fixed::max(c, e) << std::endl << std::endl;
+
+	std::cout << "pre-increment and pre-decrement operator:\n" << std::endl;
+	std::cout << "e   = " << e << std::endl;
+	std::cout << "++e = " << ++e << std::endl;
+	std::cout << "--e = " << --e << std::endl << std::endl;
+
+	std::cout << "post-increment and post-decrement operator:\n" << std::endl;
+	std::cout << "e   = " << e << std::endl;
+	std::cout << "e++ = " << e++ << std::endl;
+	std::cout << "e-- = " << e-- << std::endl << std::endl;
+
 
 	return (0);
 }
