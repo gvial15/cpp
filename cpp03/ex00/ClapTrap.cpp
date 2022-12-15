@@ -1,22 +1,27 @@
 #include "ClapTrap.hpp"
 
+// Default constructor
 ClapTrap::ClapTrap() {}
 
+// constructor
 ClapTrap::ClapTrap(std::string name) : 
 name_(name), health_(10), energy_(10), damage_(0) {
 	std::cout << "Default constructor called\n";
 }
 
+// desstructor
 ClapTrap::~ClapTrap() {
 	std::cout << "Default destructor called\n";
 }
 
+// copy constructor
 ClapTrap::ClapTrap(const ClapTrap &oldClapTrap) :
 	name_(oldClapTrap.name_), health_(oldClapTrap.health_),
 	energy_(oldClapTrap.energy_), damage_(oldClapTrap.damage_) {
 	std::cout << "Copy constructor called\n";
 }
 
+// copy assignement operator
 ClapTrap&	ClapTrap::operator= (const ClapTrap& other) {
 	std::cout << "Copy assignment operator called\n";
 	this->name_ = other.getName();
