@@ -38,13 +38,11 @@ int	Fixed::toInt(void) const {
 	return ((fixedPointValue_ ^ nFractsBits_) >> nFractsBits_);
 }
 
-Fixed& Fixed::operator= (const Fixed &fixed) {
+Fixed& Fixed::operator= (const Fixed &other) {
 	std::cout << "Copy assignment operator called\n";
-	this->fixedPointValue_ = fixed.getRawBits();
+	this->fixedPointValue_ = other.getRawBits();
 	return (*this);
 }
-
-
 
 float Fixed::operator* (const Fixed& other) {
 	return (this->toFloat() * other.toFloat());

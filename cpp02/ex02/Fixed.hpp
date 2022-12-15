@@ -10,6 +10,7 @@ class Fixed {
 		Fixed(const int n);
 		Fixed(const float n);
 		Fixed(const Fixed &oldFixed);
+		Fixed&	operator= (const Fixed& other);
 		~Fixed();
 
 		bool	operator== (const Fixed& other);
@@ -26,7 +27,6 @@ class Fixed {
 		Fixed&	operator-- ();
 		Fixed	operator++ (int);
 		Fixed	operator-- (int);
-		Fixed&	operator= (const Fixed& other);
 	
 
 	static Fixed&		min(Fixed &a, Fixed &b);
