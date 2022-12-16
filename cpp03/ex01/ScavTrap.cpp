@@ -4,8 +4,7 @@
 // constructor
 ScavTrap::ScavTrap() {};
 
-ScavTrap::ScavTrap(std::string name) {
-	name_ = name;
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
 	health_ = 100;
 	energy_ = 50;
 	damage_ = 20;
@@ -37,5 +36,5 @@ ScavTrap& ScavTrap::operator= (const ScavTrap &og) {
 }
 
 void	ScavTrap::guardGate() {
-	std::cout << "ScavTrap is now in gatekeeper mode\n";
+	std::cout << name_ << " is now in gatekeeper mode\n";
 }
