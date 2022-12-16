@@ -9,7 +9,7 @@ name_(name), health_(10), energy_(10), damage_(0) {
 	std::cout << "Default constructor called\n";
 }
 
-// desstructor
+// destructor
 ClapTrap::~ClapTrap() {
 	std::cout << "Default destructor called\n";
 }
