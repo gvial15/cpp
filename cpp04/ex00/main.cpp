@@ -1,6 +1,8 @@
 #include "Animal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
+#include "WrongAnimal.hpp"
+#include "WrongCat.hpp"
 
 int	main()
 {
@@ -12,9 +14,13 @@ int	main()
 	Dog	dog2;
 	Dog	dog3(dog1);
 
+	WrongAnimal wA;
+	WrongCat wC;
+
 	cat2 = cat1;
 	dog2 = dog1;
 
+	wC.makeSound();
 	cat1.makeSound();
 	cat2.makeSound();
 	cat3.makeSound();
