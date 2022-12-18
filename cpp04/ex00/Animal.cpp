@@ -6,6 +6,7 @@ Animal::Animal() {}
 
 Animal::Animal(std::string type) {
 	std::cout << "Animal constructor called\n";
+	type_ = type;
 }
 
 // copy constructor
@@ -14,7 +15,7 @@ Animal::Animal(const Animal &og) {
 }
 
 // copy assignement operator
-Animal& Animal::operator= (const Animal &og) {
+Animal& Animal::operator= (const Animal& og) {
 	this->type_ = og.getType();
 	return (*this);
 }

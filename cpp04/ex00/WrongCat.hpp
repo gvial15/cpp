@@ -7,7 +7,6 @@
 class WrongCat : public WrongAnimal {
 	public:
 		WrongCat();
-		WrongCat(std::string type);
 		WrongCat(const WrongCat &og);
 		WrongCat&	operator= (const WrongCat &og);
 		~WrongCat();

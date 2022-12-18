@@ -14,7 +14,6 @@ int	main()
 	Dog	dog2;
 	Dog	dog3(dog1);
 
-	WrongAnimal wA;
 	WrongCat wC;
 
 	cat2 = cat1;

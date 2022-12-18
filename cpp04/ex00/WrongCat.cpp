@@ -1,11 +1,8 @@
 #include "WrongCat.hpp"
 
 // constructor
-WrongCat::WrongCat() {
+WrongCat::WrongCat() : WrongAnimal() {
 	std::cout << "WrongCat constructor called\n";
-}
-
-WrongCat::WrongCat(std::string type) {
 }
 
 // copy constructor

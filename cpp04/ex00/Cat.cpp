@@ -1,7 +1,7 @@
 #include "Cat.hpp"
 
 // constructor
-Cat::Cat() : Animal("cat") {
+Cat::Cat() : Animal("Cat") {
 	std::cout << "Cat construcor have been called\n";
 }
 
@@ -19,7 +19,7 @@ Cat::~Cat() {
 // copy assignement operator
 Cat& Cat::operator= (const Cat &og) {
 	std::cout << "Cat copy assignement operator called\n";
-	this->type_ = og.getType();
+	Animal::operator=(og);
 	return (*this);
 }
 

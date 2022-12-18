@@ -17,5 +17,5 @@ WrongAnimal::~WrongAnimal() {
 }
 
 void	WrongAnimal::makeSound() {
-	std::cout << "WrongAnimal makeSound() called";
+	std::cout << "**WrongAnimal sound**\n";
 }
