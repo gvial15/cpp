@@ -20,7 +20,7 @@ Dog::~Dog() {
 Dog& Dog::operator= (const Dog &og) {
 	std::cout << "Dog copy assignement operator called\n";
 	Animal::operator=(og);
-	this->brain = og.brain;
+	this->brain = new Brain;
 	return (*this);
 }
 

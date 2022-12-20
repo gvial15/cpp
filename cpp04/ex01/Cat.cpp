@@ -20,7 +20,7 @@ Cat::~Cat() {
 Cat& Cat::operator= (const Cat &og) {
 	std::cout << "Cat copy assignement operator called\n";
 	Animal::operator=(og);
-	this->brain = og.brain;
+	this->brain = new Brain;
 	return (*this);
 }
 
