@@ -8,8 +8,8 @@ int	main()
 
 	b6 = b5;
 
+	std::cout << b6 << std::endl << std::endl;
 	std::cout << b5 << std::endl;
-	std::cout << b6 << std::endl;
 
 	b5.incrementGrade();
 	std::cout << b5 << std::endl;
