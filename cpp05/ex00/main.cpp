@@ -19,7 +19,7 @@ int	main()
 	}
 
 	try {
-		Bureaucrat b2 = Bureaucrat("b2", 200);
+		Bureaucrat b2 = Bureaucrat("b2", 151);
 		std::cout << b2 << std::endl;
 	} catch (Bureaucrat::GradeTooLowException &error) {
 		std::cerr << error.what() << std::endl;
