@@ -11,6 +11,12 @@ int	main()
 	std::cout << b5 << std::endl;
 	std::cout << b6 << std::endl;
 
+	b5.incrementGrade();
+	std::cout << b5 << std::endl;
+	b5.decrementGrade();
+	b5.decrementGrade();
+	std::cout << b5 << std::endl;
+
 	try {
 		Bureaucrat b1 = Bureaucrat("b1", 0);
 		std::cout << b1 << std::endl;
@@ -26,9 +32,17 @@ int	main()
 	}
 
 	try {
-		Bureaucrat b3 = Bureaucrat("b3", 1);
+		Bureaucrat b3 = Bureaucrat("b3", 150);
 		std::cout << b3 << std::endl;
-		b3.incrementGrade();
+		b3.decrementGrade();
+	} catch (Bureaucrat::GradeTooHighException &error) {
+		std::cerr << error.what() << std::endl;
+	}
+
+	try {
+		Bureaucrat b7 = Bureaucrat("b7", 1);
+		std::cout << b7 << std::endl;
+		b7.incrementGrade();
 	} catch (Bureaucrat::GradeTooHighException &error) {
 		std::cerr << error.what() << std::endl;
 	}

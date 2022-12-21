@@ -34,12 +34,14 @@ Bureaucrat::~Bureaucrat() {
 void	Bureaucrat::incrementGrade() {
 	if (grade_ < 2)
 		throw GradeTooHighException();
+	std::cout << "incrementing " << name_ << " grade\n";
 	grade_--;
 }
 
 void	Bureaucrat::decrementGrade() {
 	if (grade_ > 149)
 		throw GradeTooHighException();
+	std::cout << "decrementing " << name_ << " grade\n";
 	grade_++;
 }
 
