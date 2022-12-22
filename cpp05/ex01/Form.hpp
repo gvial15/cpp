@@ -1,7 +1,7 @@
 #ifndef FORM_H
 #define FORM_H
 
-# include <iostream>
+# include "Bureaucrat.hpp"
 
 class Form {
 	public:
@@ -11,9 +11,21 @@ class Form {
 		Form& operator=(const Form &og);
 		~Form();
 
-	unsigned int	getSign() const;
-	unsigned int	getExecute() const;
-	unsigned int	getIsSigned() const;
+	const std::string	getName() const;
+	unsigned int		getSign() const;
+	unsigned int		getExecute() const;
+	unsigned int		getIsSigned() const;
+	void				beSigned(const Bureaucrat &bureaucrat);
+
+	class GradeTooHighException : public std::exception {
+		public:
+			const char *what() const throw();
+	};
+
+	class GradeTooLowException : public std::exception {
+		public:
+			const char *what() const throw();
+	};
 
 	private:
 		const std::string	name_;
@@ -21,5 +33,7 @@ class Form {
 		unsigned int		execute_;
 		bool				isSigned_;
 };
+
+std::ostream& operator<<(std::ostream &out, const Form &obj);
 
 #endif

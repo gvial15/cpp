@@ -1,5 +1,4 @@
 #include "Bureaucrat.hpp"
-#include <string>
 
 // constructor
 Bureaucrat::Bureaucrat() {}
@@ -45,6 +44,13 @@ void	Bureaucrat::decrementGrade() {
 	grade_++;
 }
 
+void	Bureaucrat::signForm(std::string formName, unsigned int situation) const {
+	if (situation == 0)
+		std::cout << name_ << " couldn’t sign " << formName << " because his grade is to low." << std::endl;
+	if (situation == 1)
+		std::cout << name_ << " signed " << formName << std::endl;
+}
+
 // getters
 std::string	Bureaucrat::getName() const{
 	return (name_);
@@ -56,16 +62,16 @@ int	Bureaucrat::getGrade() const {
 
 // exceptions
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
-	return ("Grade too high");
+	return ("Bureaucrat grade too high");
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw() {
-	return ("Grade too low");
+	return ("Bureaucrat grade too low");
 }
 
 
 // overload
 std::ostream& operator<<(std::ostream &out, const Bureaucrat &obj) {
-	out << obj.getName() << ", bureaucrat grade " << obj.getGrade();
+	out << obj.getName() << ", bureaucrat grade " << obj.getGrade() << std::endl;
 	return (out);
 }

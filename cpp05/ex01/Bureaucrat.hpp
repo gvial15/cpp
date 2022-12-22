@@ -2,7 +2,6 @@
 #define BUREAUCRAT_H
 
 # include <iostream>
-# include <exception>
 
 class Bureaucrat {
 	public:
@@ -18,6 +17,7 @@ class Bureaucrat {
 	int			getGrade() const;
 	void		incrementGrade();
 	void		decrementGrade();
+	void		signForm(std::string formName, unsigned int situation) const;
 
 	class GradeTooHighException : public std::exception {
 		public:
