@@ -12,7 +12,7 @@ class ShrubberyCreationForm : public Form {
 		ShrubberyCreationForm& operator=(const ShrubberyCreationForm &og);
 		~ShrubberyCreationForm();
 
-	virtual void	executeAction();
+	void	executeAction();
 
 	private:
 		std::string	target_;

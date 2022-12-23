@@ -1,5 +1,6 @@
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 // default constructor
 Form::Form() {}
@@ -47,16 +48,22 @@ void	Form::beSigned(const Bureaucrat &bureaucrat) {
 	}
 }
 
-void	Form::execute(Bureaucrat const & executor) const {
+void	Form::execute(Bureaucrat const & executor) {
 	if (isSigned_ == 0)
 	{
-		std::cout << name_ << " is not signed\n";
-		return;
+		std::cout << executor.getName() << " couldn't execute because form is not signed" << std::endl;
+		throw FormNotSignedException();
 	}
-	if (executor.grade_ > sign_)
+	if (executor.grade_ > execute_)
+	{
+		std::cout << executor.getName() << " couldn't execute because his grade is to low" << std::endl;
 		throw GradeTooLowException();
+	}
 	else
+	{
 		executor.executeForm(*this);
+		executeAction();
+	}
 }
 
 // exception
@@ -66,6 +73,10 @@ const char* Form::GradeTooHighException::what() const throw() {
 
 const char* Form::GradeTooLowException::what() const throw() {
 	return ("Form grade too low");
+}
+
+const char* Form::FormNotSignedException::what() const throw() {
+	return ("Form is not signed");
 }
 
 // getters

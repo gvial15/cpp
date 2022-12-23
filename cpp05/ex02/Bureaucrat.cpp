@@ -53,8 +53,7 @@ void	Bureaucrat::signForm(std::string formName, unsigned int situation) const {
 }
 
 void	Bureaucrat::executeForm(Form const & form) const {
-	form.executeAction();
-	std::cout << name_ << " executed " << form.getName();
+	std::cout << name_ << " executed " << form.getName() << std::endl;
 }
 
 // getters
