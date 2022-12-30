@@ -46,8 +46,6 @@ int	main(int argc, char **argv)
 		std::cerr << "wrong number of args\n";
 	else
 	{
-		// still need to manage
-		// - int overflow
 		actualValue = convert(argv[1]);
 		if ((std::string)argv[1] == "nan" || (std::string)argv[1] == "nanf")
 			std::cout << "char: imposible" << std::endl;
