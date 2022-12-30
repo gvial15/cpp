@@ -1,5 +1,4 @@
 #include <iostream>
-#include <iomanip>
 
 static char	findType(std::string s)
 {
@@ -48,11 +47,18 @@ int	main(int argc, char **argv)
 	else
 	{
 		// still need to manage
-		// - int overflow and non-printable character
-		// - +inff -inff nanf and +inf -inf nan
+		// - int overflow
 		actualValue = convert(argv[1]);
-		std::cout << "char: " << static_cast<char>(actualValue) << std::endl;
-		std::cout << "int: " << static_cast<int>(actualValue) << std::endl;
+		if ((std::string)argv[1] == "nan" || (std::string)argv[1] == "nanf")
+			std::cout << "char: imposible" << std::endl;
+		else if (actualValue >= 33 && actualValue <= 126)
+			std::cout << "char:" << static_cast<char>(actualValue) << std::endl;
+		else
+		 	std::cout << "char: Non displayable\n";
+		if ((std::string)argv[1] == "nan" || (std::string)argv[1] == "nanf")
+			std::cout << "int: impossible" << std::endl;
+		else
+			std::cout << "int: " << static_cast<int>(actualValue) << std::endl;;
 		std::cout << std::fixed << "float: " << static_cast<float>(actualValue) << "f\n";
 		std::cout << std::fixed << "double: " << static_cast<double>(actualValue) << std::endl;
 	}
