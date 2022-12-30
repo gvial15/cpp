@@ -27,9 +27,7 @@ double	convert(std::string s)
 			value = s[0];
 		if (type == 'i')
 			value = std::stoi(s);
-		if (type == 'f')
-			value = std::stod(s);
-		if (type == 'd')
+		if (type == 'd' || type == 'f')
 			value = std::stod(s);
 	} catch (std::exception &e) {
 		std::cerr << "error: Conversion impossible\n";
