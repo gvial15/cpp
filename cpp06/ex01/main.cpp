@@ -15,4 +15,6 @@ int	main() {
 
 	std::cout << "original pointer: " << data << std::endl;
 	std::cout << "after serialize() / deserialize(): " << deserialize(serialize(data)) << std::endl;
+
+	delete data;
 }
