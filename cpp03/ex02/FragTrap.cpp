@@ -20,6 +20,8 @@ FragTrap::FragTrap(const FragTrap &og) {
 
 // copy assignement operator
 FragTrap&	FragTrap::operator= (const FragTrap &og) {
+	if (this == &og)
+		return (*this);
 	this->name_ = og.getName();
 	this->health_ = og.getHealth();
 	this->energy_ = og.getEnergy();

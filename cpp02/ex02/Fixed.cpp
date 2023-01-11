@@ -39,6 +39,8 @@ int	Fixed::toInt(void) const {
 }
 
 Fixed& Fixed::operator= (const Fixed &other) {
+	if (this == &other)
+		return (*this);
 	std::cout << "Copy assignment operator called\n";
 	this->fixedPointValue_ = other.getRawBits();
 	return (*this);

@@ -27,6 +27,8 @@ ScavTrap::ScavTrap(const ScavTrap &og) {
 
 // copy assignement operator
 ScavTrap& ScavTrap::operator= (const ScavTrap &og) {
+	if (this == &og)
+		return (*this);
 	std::cout << "ScavTrap copy assignement operator called\n";
 	this->name_ = og.getName();
 	this->health_ = og.getHealth();

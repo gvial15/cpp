@@ -23,6 +23,8 @@ ClapTrap::ClapTrap(const ClapTrap &oldClapTrap) :
 
 // copy assignement operator
 ClapTrap&	ClapTrap::operator= (const ClapTrap& other) {
+	if (this == &other)
+		return (*this);
 	std::cout << "Copy assignment operator called\n";
 	this->name_ = other.getName();
 	this->health_ = other.getHealth();

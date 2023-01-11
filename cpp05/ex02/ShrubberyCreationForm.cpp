@@ -18,6 +18,8 @@ Form("ShrubberyCreationForm", 145, 137), target_(og.target_) {
 
 // copy assignement operator
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm &og) {
+	if (this == &og)
+		return (*this);
 	this->target_ = og.target_;
 	return (*this);
 }

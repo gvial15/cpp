@@ -21,6 +21,8 @@ name_(og.getName()), grade_(og.getGrade()) {
 
 // copy assignement operator
 Bureaucrat Bureaucrat::operator=(const Bureaucrat &og) {
+	if (this == &og)
+		return (*this);
 	std::cout << "Bureaucrat copy assignement operator have been called\n";
 	this->grade_ = og.getGrade();
 	return (*this);

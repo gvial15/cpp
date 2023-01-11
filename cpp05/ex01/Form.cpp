@@ -23,6 +23,8 @@ sign_(og.getSign()), execute_(og.getExecute()), isSigned_(og.getIsSigned()) {
 
 // copy assignement operator
 Form& Form::operator=(const Form &og) {
+	if (this == &og)
+		return (*this);
 	std::cout << "Form copy assignement operator have been called\n";
 	this->execute_ = og.getExecute();
 	this->isSigned_ = og.getIsSigned();

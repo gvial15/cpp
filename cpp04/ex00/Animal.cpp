@@ -16,6 +16,8 @@ Animal::Animal(const Animal &og) {
 
 // copy assignement operator
 Animal& Animal::operator= (const Animal& og) {
+	if (this == &og)
+		return (*this);
 	this->type_ = og.getType();
 	return (*this);
 }

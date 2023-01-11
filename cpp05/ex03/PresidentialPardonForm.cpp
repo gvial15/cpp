@@ -17,6 +17,8 @@ Form("RobotomyRequestForm", 25, 5), target_(og.target_) {
 
 // copy assignement operator
 PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm &og) {
+	if (this == &og)
+		return (*this);
 	this->target_ = og.target_;
 	return (*this);
 }

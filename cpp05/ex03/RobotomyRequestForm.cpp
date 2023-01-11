@@ -17,6 +17,8 @@ Form("RobotomyRequestForm", 72, 45), target_(og.target_) {
 
 // copy assignement operator
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm &og) {
+	if (this == &og)
+		return (*this);
 	this->target_ = og.target_;
 	return (*this);
 }

@@ -13,6 +13,8 @@ class Array {
 				arr_[i] = og.arr_[i];
 		}
 		Array<C>&	operator=(const Array<C> &og) {
+			if (this == &og)
+				return (*this);
 			size_ = og.size_;
 			for (int i = 0; i < og.size(); ++i)
 				arr_[i] = og.arr_[i];

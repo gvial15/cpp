@@ -22,9 +22,11 @@ Fixed::Fixed(const Fixed &oldFixed) : fixedPointValue_(oldFixed.fixedPointValue_
 	std::cout << "Copy constructor called\n";
 }
 
-Fixed& Fixed::operator= (const Fixed &fixed) {
+Fixed& Fixed::operator= (const Fixed &og) {
+	if (this == &og)
+		return (*this);
 	std::cout << "Copy assignment operator called\n";
-	this->fixedPointValue_ = fixed.getRawBits();
+	this->fixedPointValue_ = og.getRawBits();
 	return (*this);
 }
 
