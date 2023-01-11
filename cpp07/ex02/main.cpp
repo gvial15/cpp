@@ -1,5 +1,4 @@
 #include "Array.hpp"
-#include <ostream>
 
 int	main() {
 	Array<int>	arr1(5);
