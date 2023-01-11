@@ -1,7 +1,6 @@
 #ifndef ARRAY_H
 #define ARRAY_H
 
-#include <exception>
 # include <iostream>
 
 template <class C>
