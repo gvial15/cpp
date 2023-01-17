@@ -85,5 +85,8 @@ void	PhoneBook::search()
 	}
 	std::cout << "choose index to look up: \n";
 	getline(std::cin, n);
-	printContact(contacts[std::atoi(n.c_str())]);
+	if (atoi(n.c_str()) > 7 || atoi(n.c_str()) < 0 )
+		std::cout << "Invalid index\n";
+	else
+		printContact(contacts[atoi(n.c_str())]);
 }
