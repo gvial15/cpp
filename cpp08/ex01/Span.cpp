@@ -54,3 +54,22 @@ int	Span::longestSpan() {
 	sort(sortedVec.begin(), sortedVec.end());
 	return (*(std::max_element(sortedVec.begin(), sortedVec.end())) - *(sortedVec.begin()));
 }
+
+int	Span::shortestSpan() {
+	int	i = -1;
+	int	span = 0;
+	int	shortestSpan;
+	std::vector<int> sortedVec = vec_;
+
+	if (vec_.size() < 2)
+		std::cout << "Size is less than 2\n";
+	sort(sortedVec.begin(), sortedVec.end());
+	shortestSpan = sortedVec[1] - sortedVec[0];
+	while (sortedVec[++i + 1])
+	{
+		span = sortedVec[i + 1] - sortedVec[i];
+		if (span < shortestSpan)
+			shortestSpan = span;
+	}
+	return (shortestSpan);
+}
