@@ -37,6 +37,7 @@ int	main()
 		PresidentialPardonForm p1("p1");
 		p1.beSigned(b3);
 		p1.execute(b3);
+		// b3.executeForm(p1);
 	}
 	catch (std::exception &e){
 		std::cerr << e.what() << std::endl;
@@ -48,6 +49,19 @@ int	main()
 	try {
 		Bureaucrat b4("b4", 1);
 		PresidentialPardonForm p2("p2");
+		p2.beSigned(b4);
+		p2.execute(b4);
+	}
+	catch (std::exception &e){
+		std::cerr << e.what() << std::endl;
+	}
+
+	std::cout << std::endl;
+
+	// try if grades are high enough to sign and execute
+	try {
+		Bureaucrat b4("b4", 1);
+		ShrubberyCreationForm p2("p2");
 		p2.beSigned(b4);
 		p2.execute(b4);
 	}
