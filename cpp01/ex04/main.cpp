@@ -3,6 +3,8 @@
 
 int	main(int argc, char **argv)
 {
+	std::string		newFileExtension = ".replace";
+	std::string		newFileName = argv[1] + newFileExtension;
 	std::fstream	file;
 	std::fstream	newFile;
 	std::string		line;
@@ -12,7 +14,7 @@ int	main(int argc, char **argv)
 	else
 	{
 		file.open(argv[1], std::ios::in);
-		newFile.open("newFile", std::ios::out);
+		newFile.open(newFileName, std::ios::out);
 		while (getline(file, line))
 		{
 			if (line.compare(argv[2]) == 0)
