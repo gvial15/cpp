@@ -19,7 +19,7 @@ int	main()
 
 	std::cout << std::endl;
 
-	// try to sign from but bureaucrat grade is too low
+	// try to sign form but bureaucrat grade is too low
 	try {
 		Bureaucrat b2("b2", 120);
 		RobotomyRequestForm r1("r1");
@@ -31,7 +31,7 @@ int	main()
 
 	std::cout << std::endl;
 
-	// try to execute from but bureaucrat grade is too low
+	// try to execute form but bureaucrat grade is too low
 	try {
 		Bureaucrat b3("b3", 10);
 		PresidentialPardonForm p1("p1");
@@ -42,7 +42,9 @@ int	main()
 		std::cerr << e.what() << std::endl;
 	}
 
-	// try if grades are good to sign and execute
+	std::cout << std::endl;
+
+	// try if grades are high enough to sign and execute
 	try {
 		Bureaucrat b4("b4", 1);
 		PresidentialPardonForm p2("p2");
