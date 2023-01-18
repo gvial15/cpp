@@ -3,9 +3,8 @@
 
 HumanA::~HumanA() {};
 
-HumanA::HumanA(std::string name, Weapon weapon) {
+HumanA::HumanA(std::string name, Weapon &weapon) : weapon_(weapon) {
 	name_ = name;
-	weapon_ = weapon;
 }
 
 void	HumanA::attack() {

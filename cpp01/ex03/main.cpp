@@ -10,14 +10,12 @@ int main()
 	club.setType("some other type of club");
 	bob.attack();
 
-
-	std::cout << "\n\n";
+	std::cout << "\n";
 
 	Weapon club1 = Weapon("crude spiked club1");
 	HumanB jim("Jim");
 	jim.setWeapon(club1);
 	jim.attack();
-	club.setType("some other type of club1");
+	club1.setType("some other type of club1");
 	jim.attack();
-	return 0;
 }
