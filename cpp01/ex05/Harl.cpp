@@ -20,12 +20,13 @@ void	Harl::error(void) {
 }
 
 void	Harl::complain(std::string level) {
-	if (level.compare("debug") == 0)
-		debug();
-	if (level.compare("info") == 0)
-		info();
-	if (level.compare("warning") == 0)
-		warning();
-	if (level.compare("error") == 0)
-		error();
+	int	i = -1;
+	while (++i < 4)
+	{
+		if (level == this->level[i]) {
+			(this->*func[i])();
+			return;
+		}
+	}
+	std::cout << "Invalid complaint\n";
 }
