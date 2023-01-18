@@ -1,4 +1,5 @@
 #include "Span.hpp"
+#include <algorithm>
 #include <exception>
 #include <iterator>
 #include <vector>
@@ -41,4 +42,20 @@ void	Span::addNumbers(std::vector<int>::iterator start, std::vector<int>::iterat
 	} catch (std::exception &e) {
 		std::cerr << e.what() << std::endl;
 	}
+}
+
+int	Span::longestSpan() {
+	int	span = 0;
+	int	longestSpan = 0;
+	std::vector<int> sortedVec = vec_;
+
+	if (vec_.size() < 2)
+		std::cout << "Size is less than 2\n";
+	sort(sortedVec.begin(), sortedVec.end());
+	for(int i=0; i < sortedVec.size(); i++) {
+		span = *(std::max_element(vec_.begin(), vec_.end())) - sortedVec[i];
+		if (span > longestSpan)
+			longestSpan = span;
+	}
+	return (longestSpan);
 }
