@@ -48,7 +48,7 @@ int	main(int argc, char **argv)
 		if ((std::string)argv[1] == "nan" || (std::string)argv[1] == "nanf")
 			std::cout << "char: imposible" << std::endl;
 		else if (actualValue >= 33 && actualValue <= 126)
-			std::cout << "char:" << static_cast<char>(actualValue) << std::endl;
+			std::cout << "char: '" << static_cast<char>(actualValue) << "'" << std::endl;
 		else
 		 	std::cout << "char: Non displayable\n";
 		if ((std::string)argv[1] == "nan" || (std::string)argv[1] == "nanf")
