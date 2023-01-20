@@ -4,7 +4,7 @@
 int	main(int argc, char **argv)
 {
 	std::string		newFileExtension = ".replace";
-	std::string		newFileName = argv[1] + newFileExtension;
+	std::string		newFileName;
 	std::string		s1;
 	std::string		s2;
 	std::fstream	file;
@@ -17,6 +17,7 @@ int	main(int argc, char **argv)
 		std::cout << "Argument error\n";
 	else
 	{
+		newFileName = argv[1] + newFileExtension;
 		s1 = argv[2];
 		s2 = argv[3];
 		file.open(argv[1], std::ios::in);
