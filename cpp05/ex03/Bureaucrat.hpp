@@ -10,7 +10,7 @@ class Bureaucrat {
 		Bureaucrat();
 		Bureaucrat(std::string name, unsigned int grade);
 		Bureaucrat(const Bureaucrat &og);
-		Bureaucrat operator=(const Bureaucrat &og);
+		Bureaucrat& operator=(const Bureaucrat &og);
 		~Bureaucrat();
 		const std::string	name_;
 		int					grade_;

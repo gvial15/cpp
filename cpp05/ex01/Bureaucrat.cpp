@@ -19,7 +19,7 @@ name_(og.getName()), grade_(og.getGrade()) {
 }
 
 // copy assignement operator
-Bureaucrat Bureaucrat::operator=(const Bureaucrat &og) {
+Bureaucrat& Bureaucrat::operator=(const Bureaucrat &og) {
 	if (this == &og)
 		return (*this);
 	this->grade_ = og.getGrade();

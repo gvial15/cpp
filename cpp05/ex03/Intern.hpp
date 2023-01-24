@@ -9,7 +9,7 @@ class Intern {
 	public:
 		Intern();
 		Intern(const Intern &og);
-		Intern operator=(const Intern &og);
+		Intern& operator=(const Intern &og);
 		~Intern();
 	
 	Form&	makeForm(std::string formName, std::string target);

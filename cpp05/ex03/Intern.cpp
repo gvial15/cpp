@@ -16,7 +16,7 @@ Intern::Intern(const Intern& og) {
 }
 
 // copy assignement operator
-Intern Intern::operator=(const Intern &og) {
+Intern& Intern::operator=(const Intern &og) {
 	if (this == &og)
 		return (*this);
 	std::cout << "Intern copy assignement operator have been called\n";
