@@ -33,9 +33,9 @@ Form&	Intern::makeForm(std::string name, std::string target) {
 	Form *form;
 	if (!name.compare("PresidentialPardonForm"))
 		form = new PresidentialPardonForm(target);
-	if (!name.compare("RobotomyRequestForm"))
+	else if (!name.compare("RobotomyRequestForm"))
 		form = new RobotomyRequestForm(target);
-	if (!name.compare("ShrubberyCreationForm"))
+	else if (!name.compare("ShrubberyCreationForm"))
 		form = new ShrubberyCreationForm(target);
 	else
 	 	std::cout << "This type of form doesn't exist\n";
