@@ -12,7 +12,7 @@ class MutantStack : public std::stack<T> {
 			return (*this);
 		}
 
-	typedef typename Container::deque::iterator iterator;
+	typedef typename Container::iterator iterator;
 
 	iterator begin() {
 		return this->c.begin();
