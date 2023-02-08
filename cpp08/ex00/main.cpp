@@ -2,7 +2,7 @@
 
 template <class T>
 typename T::iterator	easyfind(T container, int value) {
-    std::vector<int>::iterator it;
+    typename T::iterator it;
 
 	it = std::find(container.begin(), container.end(), value);
 	if (it != container.end())
@@ -23,7 +23,7 @@ int	main() {
 
 	try {
     	std::vector<int>::iterator it;
-		it = easyfind(vec, 42);
+		it = easyfind(vec, 43);
 		std::cout << *it << std::endl;
 	} catch (std::exception &err) {
 		std::cerr << err.what() << std::endl;
