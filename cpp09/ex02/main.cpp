@@ -1,1 +1,1 @@
-// list + vector
+// dqueue + vector
