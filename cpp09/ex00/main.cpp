@@ -2,10 +2,9 @@
 
 int	main(int argc, char **argv)
 {
-	if (argc == 2 )
-		BitcoinExchange	btc(argv[1]);
-	else
-		std::cout << "argument error\n";
-
+	if (argc != 2)
+		std::cout << "argument error\n", exit(0);
+	BitcoinExchange	btc(argv[1]);
+	btc.display_result();
 	return (0);
 }
