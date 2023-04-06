@@ -26,7 +26,7 @@ BitcoinExchange::~BitcoinExchange() {}
 // display list
 void	BitcoinExchange::display_result()
 {
-	long			qty;
+	float			qty;
 	long			find;
 	std::string		line;
 	std::ifstream 	intput_file(file);
@@ -37,19 +37,20 @@ void	BitcoinExchange::display_result()
 		find = line.find("|");
 		if (find == -1)
 			std::cout << "Error: bad input => " << line << std::endl;
-		else if (data_base.count(line.substr(0, find - 1)))
+		else
 		{
-			qty = stol(line.substr(find + 1, line.size() - find));
+			qty = stof(line.substr(find + 1, line.size() - find));
 			if (qty < 0)
 				std::cout << "Error: not a positive number.\n";
-			else if (qty > 2147483647)
+			else if (qty > 1000)
 				std::cout << "Error: too large a number.\n";
-			else
-				std::cout << line.substr(0, find - 1) << " => " << qty << " = " << qty * data_base[line.substr(0, find - 1)] << std::endl;
-
+			else if (data_base.count(line.substr(0, find - 1)))
+					std::cout << line.substr(0, find - 1) << " => " << qty << " = "\
+						<< qty * data_base[line.substr(0, find - 1)] << std::endl;
+			// date not in database, need to find last recorded price in database
+			else if (!data_base.count(line.substr(0, find - 1)))
+				std::cout << line.substr(0, find - 1) << " => " << qty << " = "\
+					<< data_base[line.substr(0, find - 1)] << std::endl;
 		}
-		// find closest date in data base and multiply qty by that price
-		else if (!data_base.count(line.substr(0, find - 1)))
-			std::cout << line.substr(0, find - 1) << std::endl;
 	}
 }
