@@ -1,5 +1,6 @@
 #include <iostream>
-#include <stdlib.h>
+#include <fstream>
+#include <string>
 #include <map>
 
 class BitcoinExchange {
@@ -10,6 +11,6 @@ class BitcoinExchange {
 	void	display_result();
 
 	private:
-		std::map<std::string, float>	price;
-		std::map<std::string, float>	qty;
+		std::string						file;
+		std::map<std::string, float>	data_base;
 };
