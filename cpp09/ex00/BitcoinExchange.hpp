@@ -8,7 +8,9 @@ class BitcoinExchange {
 		BitcoinExchange(std::string input_file);
 		~BitcoinExchange();
 
-	void	display_result();
+	void		display_result();
+	std::string	lower_date(std::string date);
+	std::string	find_closest_date(std::string from_date);
 
 	private:
 		std::string						file;
