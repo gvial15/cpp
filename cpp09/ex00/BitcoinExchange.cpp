@@ -40,7 +40,7 @@ std::string	BitcoinExchange::lower_date(std::string date)
 			new_date.insert(8, std::to_string(stoi(day) - 1));
 	}
 	// if day == 1, lower month by 1, day == 31
-	else if (stoi(month) > 1)
+	else if (stoi(day) == 1 && stoi(month) > 1)
 	{
 		new_date.erase(8, 2);
 		new_date.insert(8, "31");
@@ -51,7 +51,7 @@ std::string	BitcoinExchange::lower_date(std::string date)
 			new_date.insert(5, std::to_string(stoi(month) - 1));
 	}
 	// if month == 1, lower year by 1, month == 12  && day == 1
-	if (stoi(month) == 1)
+	if (stoi(day) == 1 && stoi(month) == 1)
 	{
 		new_date.erase(0, 4);
 		new_date.insert(0, std::to_string(stoi(year) - 1));
@@ -65,7 +65,6 @@ std::string	BitcoinExchange::lower_date(std::string date)
 
 std::string	BitcoinExchange::find_closest_date(std::string from_date)
 {
-	// save the first and last to not search out of the bounds of database since i dont use iterators
 	std::string	db_first_date;
 	std::string	db_last_date;
 	std::string	date;
