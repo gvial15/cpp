@@ -10,7 +10,7 @@ BitcoinExchange::BitcoinExchange(std::string arg)
 
 	this->file = arg;
 	if(input_file.fail())
-		std::cout << "input file error\n";
+		std::cout << "Error: could not open file\n";
 	std::getline(data_base_file, line);
 	while (std::getline(data_base_file, line))
 	{
