@@ -76,7 +76,6 @@ std::string	BitcoinExchange::find_closest_date(std::string from_date)
 		data_base.erase(date);
 		date = lower_date(date);
 	}
-	std::cout << "\ndate = " << date << std::endl;
 	return (date);
 }
 
