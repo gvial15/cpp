@@ -2,7 +2,7 @@ SRCS =	main.cpp PmergeMe.cpp
 
 OBJS = $(SRCS:%cpp=%o)
 
-NAME = btc
+NAME = PmergeMe
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
