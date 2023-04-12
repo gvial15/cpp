@@ -23,6 +23,7 @@ BitcoinExchange::BitcoinExchange(std::string arg)
 // destructor
 BitcoinExchange::~BitcoinExchange() {}
 
+// lower a given date by one day
 std::string	BitcoinExchange::lower_date(std::string date)
 {
 	std::string	new_date = date;
@@ -63,6 +64,7 @@ std::string	BitcoinExchange::lower_date(std::string date)
 	return (new_date);
 }
 
+// find closest date
 std::string	BitcoinExchange::find_closest_date(std::string from_date)
 {
 	std::string	db_first_date;

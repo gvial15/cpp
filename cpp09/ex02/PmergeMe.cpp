@@ -21,3 +21,33 @@ PmergeMe::PmergeMe(char **argv)
 
 // destructor
 PmergeMe::~PmergeMe() {}
+
+// insert-sort given container
+template<class T>
+void	PmergeMe::insert_sort(T array)
+{
+	
+}
+
+// merge-sort given container
+template <class T>
+void	PmergeMe::merge_sort(T array)
+{
+
+}
+
+// merge-insert-sort given container
+void	PmergeMe::merge_insert_sort()
+{
+// merge-insertion sort: on each iteration of the merge-sort do a insertion-sort on the subarrays
+
+// divide "array" in multiple array of equal size like you would in merge sort
+// then apply a insertion-sort on each new "array"
+// then merge-sort the insertion-sorted arrays
+}
+
+// display before sort and after sort array with time performance for each container
+void	PmergeMe::display_data()
+{
+
+}
