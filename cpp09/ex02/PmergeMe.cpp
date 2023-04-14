@@ -1,4 +1,6 @@
 #include "PmergeMe.hpp"
+#include <string>
+#include <vector>
 
 // constructor
 PmergeMe::PmergeMe(char **argv)
@@ -22,32 +24,33 @@ PmergeMe::PmergeMe(char **argv)
 // destructor
 PmergeMe::~PmergeMe() {}
 
-// insert-sort given container
+// insert-sort array
 template<class T>
-void	PmergeMe::insert_sort(T array)
+void	PmergeMe::insert_sort(T &array)
 {
-	
-}
+	int							tmp;
+	std::vector<int>::iterator	i;
+	std::vector<int>::iterator	ii;
+	std::vector<int>::iterator	prev;
 
-// merge-sort given container
-template <class T>
-void	PmergeMe::merge_sort(T array)
-{
-	
-}
-
-// merge-insert-sort given container
-void	PmergeMe::merge_insert_sort()
-{
-// merge-insertion sort: on each iteration of the merge-sort do a insertion-sort on the subarrays
-
-// divide "array" in multiple array of equal size like you would in merge sort
-// then apply a insertion-sort on each new "array"
-// then merge-sort the insertion-sorted arrays
+	i = array.begin();
+	while (i != array.end())
+	{
+		if (i != array.begin() && *i < *prev)
+		{
+			ii = i;
+			while (ii != array.begin() && *i < *--ii);
+			tmp = *i;
+			array.erase(i);
+			array.insert(++ii, tmp);
+		}
+		prev = i;
+		i++;
+	}
 }
 
 // display before sort and after sort array with time performance for each container
 void	PmergeMe::display_data()
 {
-
+	
 }

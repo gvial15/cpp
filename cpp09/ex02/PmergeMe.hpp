@@ -8,10 +8,7 @@ class PmergeMe {
 		~PmergeMe();
 
 	template<class T>
-	void	merge_sort(T array);
-	template<class T>
-	void	insert_sort(T array);
-	void	merge_insert_sort();
+	void	insert_sort(T &array);
 	void	display_data();
 
 	private:
