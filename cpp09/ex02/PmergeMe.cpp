@@ -11,8 +11,8 @@ PmergeMe::PmergeMe(char **argv)
 	while (argv[++i])
 	{
 		while (argv[i][++ii])
-			if (!std::isdigit(argv[i][ii]))
-				std::cout << "Error: arguments must only be int\n", exit(0);
+			if (!std::isdigit(argv[i][ii]) && std::atoi(&argv[i][ii]) < 0)
+				std::cout << "Error: arguments must be only positive integers\n", exit(0);
 		vec.push_back(atoi(argv[i]));
 		deque.push_back(atoi(argv[i]));
 		ii = -1;
@@ -33,7 +33,7 @@ void	PmergeMe::insert_sort(T array)
 template <class T>
 void	PmergeMe::merge_sort(T array)
 {
-
+	
 }
 
 // merge-insert-sort given container
