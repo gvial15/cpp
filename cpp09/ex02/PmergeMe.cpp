@@ -26,10 +26,10 @@ PmergeMe::~PmergeMe() {}
 template<class C>
 void	PmergeMe::insert_sort(C &array, int l, int r)
 {
-	int							tmp;
-	std::vector<int>::iterator	i;
-	std::vector<int>::iterator	ii;
-	std::vector<int>::iterator	prev;
+	int						tmp;
+	typename C::iterator	i;
+	typename C::iterator	ii;
+	typename C::iterator	prev;
 
 	i = array.begin() + l - 1;
 	prev = i;
@@ -108,6 +108,7 @@ void	PmergeMe::sort_and_display_data()
 	}
 
 	merge_insert_sort(vec, 0, vec.size() - 1, 2);
+	merge_insert_sort(deque, 0, deque.size() - 1, 2);
 
 	std::cout << "\n";
 
