@@ -1,6 +1,4 @@
 #include "PmergeMe.hpp"
-#include <string>
-#include <vector>
 
 // constructor
 PmergeMe::PmergeMe(char **argv)
@@ -24,6 +22,7 @@ PmergeMe::PmergeMe(char **argv)
 // destructor
 PmergeMe::~PmergeMe() {}
 
+// insert sort
 template<class C>
 void	PmergeMe::insert_sort(C &array, int l, int r)
 {
@@ -49,13 +48,51 @@ void	PmergeMe::insert_sort(C &array, int l, int r)
 	}
 }
 
+// merge sort
+template<class C>
+void	PmergeMe::merge_sort(C &array, int l, int r, int m)
+{
+	int	tmp[r - l + 1], i, j, k;
+
+	i = l;
+	j = m + 1;
+	k = 0;
+	while (i <= m && j <= r)
+	{
+		if (array[i] <= array[j])
+			tmp[k] = array[i++];
+		else
+			tmp[k] = array[j++];
+		k++;
+	}
+	while (i <= m)
+		tmp[k++] = array[i++];
+	while (j <= r)
+		tmp[k++] = array[j++];
+	i = -1;
+	while (++i < k)
+		array[l + i] = tmp[i];
+}
+
+// merge-insert sort
 template<class C>
 void	PmergeMe::merge_insert_sort(C &array, int l, int r, int threshold)
 {
+	int	tmp[r - l + 1], m, i, j, k;
+
 	if (l < r)
 	{
-
+		if (r - l + 1 <= threshold)
+			insert_sort(array, l, r);
+		else
+		{
+			m = l + (r - l) / 2;
+			merge_insert_sort(array, l, m, threshold);
+			merge_insert_sort(array, m + 1, r, threshold);
+			merge_sort(array, l, r, m);
+		}
 	}
+	insert_sort(array, l, r);
 }
 
 void	PmergeMe::sort_and_display_data()
@@ -63,17 +100,6 @@ void	PmergeMe::sort_and_display_data()
 	std::vector<int>::iterator vec_i;
 	std::deque<int>::iterator deque_i;
 
-	// merge_sort<std::vector<int> >(vec, 0, vec.size() - 1);
-	// merge_sort<std::deque<int> >(deque, 0, deque.size() - 1);
-
-
-
-
-
-
-
-
-	// print vec
 	vec_i = vec.begin();
 	while (vec_i != vec.end())
 	{
@@ -81,7 +107,7 @@ void	PmergeMe::sort_and_display_data()
 		vec_i++;
 	}
 
-	insert_sort(vec, 8, 11);
+	merge_insert_sort(vec, 0, vec.size() - 1, 2);
 
 	std::cout << "\n";
 
