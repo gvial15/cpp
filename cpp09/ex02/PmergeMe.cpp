@@ -50,7 +50,7 @@ void	PmergeMe::insert_sort(C &array, int l, int r)
 
 // merge sort
 template<class C>
-void	PmergeMe::merge(C &array, int l, int r, int m)
+void	PmergeMe::merge(C &array, int l, int m, int r)
 {
 	int	tmp[r - l + 1], i, j, k;
 
@@ -78,7 +78,13 @@ void	PmergeMe::merge(C &array, int l, int r, int m)
 template<class C>
 void	PmergeMe::merge_insert_sort(C &array, int l, int r, int threshold)
 {
-
+	if ( l < r)
+	{
+		int	m = l + (r - l) / 2;
+		merge_insert_sort(array, l, m, threshold);
+		merge_insert_sort(array, m + 1, r, threshold);
+		merge(array, l, m, r);
+	}
 }
 
 void	PmergeMe::sort_and_display_data()
@@ -86,15 +92,22 @@ void	PmergeMe::sort_and_display_data()
 	std::vector<int>::iterator vec_i;
 	std::deque<int>::iterator deque_i;
 
-	deque_i = deque.begin();
-	while (deque_i != deque.end())
+
+
+
+
+
+
+
+	// print containers
+	vec_i = vec.begin();
+	while (vec_i != vec.end())
 	{
-		std::cout << *deque_i << " ";
-		deque_i++;
+		std::cout << *vec_i << " ";
+		vec_i++;
 	}
-
+	merge_insert_sort(vec, 0, vec.size() - 1, 3);
 	std::cout << "\n";
-
 	vec_i = vec.begin();
 	while (vec_i != vec.end())
 	{
