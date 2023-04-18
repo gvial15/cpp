@@ -107,8 +107,8 @@ void	PmergeMe::sort_and_display_data()
 		vec_i++;
 	}
 
-	merge_insert_sort(vec, 0, vec.size() - 1, 2);
-	merge_insert_sort(deque, 0, deque.size() - 1, 2);
+	merge_insert_sort(vec, 0, vec.size() - 1, 3);
+	// merge_insert_sort(deque, 0, deque.size(), 2);
 
 	std::cout << "\n";
 
