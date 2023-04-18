@@ -80,6 +80,8 @@ void	PmergeMe::merge_insert_sort(C &array, int l, int r, int threshold)
 {
 	if ( l < r)
 	{
+		if (r - l + 1 <= threshold)
+			insert_sort(array, l, r);
 		int	m = l + (r - l) / 2;
 		merge_insert_sort(array, l, m, threshold);
 		merge_insert_sort(array, m + 1, r, threshold);
@@ -92,23 +94,8 @@ void	PmergeMe::sort_and_display_data()
 	std::vector<int>::iterator vec_i;
 	std::deque<int>::iterator deque_i;
 
-
-
-
-
-
-
-
-	// print containers
-	vec_i = vec.begin();
-	while (vec_i != vec.end())
-	{
-		std::cout << *vec_i << " ";
-		vec_i++;
-	}
 	merge_insert_sort(vec, 0, vec.size() - 1, 3);
-	std::cout << "\n";
-	vec_i = vec.begin();
+	vec_i = vec.begin();	
 	while (vec_i != vec.end())
 	{
 		std::cout << *vec_i << " ";
