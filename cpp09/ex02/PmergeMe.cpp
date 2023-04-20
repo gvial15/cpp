@@ -31,7 +31,10 @@ void	PmergeMe::insert_sort(C &array, int l, int r)
 	typename C::iterator	ii;
 	typename C::iterator	prev;
 
-	i = array.begin() + l - 1;
+	if (l - 1 == -1)
+		i = array.begin();
+	else
+		i = array.begin() + l - 1;
 	prev = i;
 	while (i != array.begin() + r)
 	{
@@ -89,17 +92,49 @@ void	PmergeMe::merge_insert_sort(C &array, int l, int r, int threshold)
 	}
 }
 
+// sort the containers and display the times etc... as required by subject
 void	PmergeMe::sort_and_display_data()
 {
+	double vec_ms;
+	double deque_ms;
+	std::chrono::steady_clock::time_point t_start;
+	std::chrono::steady_clock::time_point t_end;
 	std::vector<int>::iterator vec_i;
 	std::deque<int>::iterator deque_i;
 
-	merge_insert_sort(vec, 0, vec.size() - 1, 3);
-	vec_i = vec.begin();	
+
+	// before
+	std::cout << "Before: ";
+	vec_i = vec.begin();
 	while (vec_i != vec.end())
 	{
 		std::cout << *vec_i << " ";
 		vec_i++;
 	}
 	std::cout << "\n";
+
+	// sort
+	t_start = std::chrono::high_resolution_clock::now();
+	merge_insert_sort(vec, 0, vec.size() - 1, 3);
+	t_end = std::chrono::high_resolution_clock::now();
+	vec_ms = std::chrono::duration<double, std::milli>(t_end-t_start).count();
+	t_start = std::chrono::high_resolution_clock::now();
+	merge_insert_sort(deque, 0, deque.size() - 1, 3);
+	t_end = std::chrono::high_resolution_clock::now();
+	deque_ms = std::chrono::duration<double, std::milli>(t_end-t_start).count();
+
+	// after
+	std::cout << "After: ";
+	deque_i = deque.begin();
+	while (deque_i != deque.end())
+	{
+		std::cout << *deque_i << " ";
+		deque_i++;
+	}
+	// display time for each container
+	std::cout << "\n";
+	std::cout << "Time to process a range of " << vec.size()\
+	<< " elements with std::vector<int>: " << vec_ms << "ms\n";
+	std::cout << "Time to process a range of " << deque.size()\
+	<< " elements with std::deque<int>: " << deque_ms << "ms\n";
 }
