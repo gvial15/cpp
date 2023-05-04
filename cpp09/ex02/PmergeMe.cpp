@@ -83,7 +83,7 @@ void	PmergeMe::merge_insert_sort(C &array, int l, int r, int threshold)
 {
 	if ( l < r)
 	{
-		if (r - l + 1 <= threshold)
+		if (r - l + 1 < threshold)
 			insert_sort(array, l, r);
 		int	m = l + (r - l) / 2;
 		merge_insert_sort(array, l, m, threshold);
