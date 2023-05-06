@@ -1,3 +1,7 @@
+SRCS =	main.cpp RPN.cpp
+
+OBJS = $(SRCS:%cpp=%o)
+
 NAME = RPN
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
@@ -7,7 +11,7 @@ CC = c++
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) main.cpp RPN.cpp -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 clean:
 	rm -rf $(OBJS)

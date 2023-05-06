@@ -38,13 +38,25 @@ int	RPN::solve()
 			digit2 = stack.top();
 			stack.pop();
 			if (equation[i] == '*')
+			{
+				printf("%i * %i\n", digit1, digit2);
 				stack.push(digit1 * digit2);
+			}
 			if (equation[i] == '/')
+			{
+				printf("%i / %i\n", digit1, digit2);
 				stack.push(digit1 / digit2);
+			}
 			if (equation[i] == '+')
+			{
+				printf("%i + %i\n", digit1, digit2);
 				stack.push(digit1 + digit2);
+			}
 			if (equation[i] == '-')
+			{
+				printf("%i - %i\n", digit1, digit2);
 				stack.push(digit1 - digit2);
+			}
 		}
 	}
 	return (stack.top());
