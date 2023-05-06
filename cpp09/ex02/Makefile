@@ -1,8 +1,4 @@
-SRCS =	main.cpp PmergeMe.cpp
-
-OBJS = $(SRCS:%cpp=%o)
-
-NAME = PmergeMe
+NAME = btc
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
@@ -11,7 +7,7 @@ CC = c++
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	$(CC) $(CFLAGS) main.cpp PmergMe.cpp -o $(NAME)
 
 clean:
 	rm -rf $(OBJS)

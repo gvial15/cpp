@@ -1,7 +1,3 @@
-SRCS =	main.cpp BitcoinExchange.cpp
-
-OBJS = $(SRCS:%cpp=%o)
-
 NAME = btc
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
@@ -11,7 +7,7 @@ CC = c++
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	$(CC) $(CFLAGS) main.cpp BitcoinExchange.cpp -o $(NAME)
 
 clean:
 	rm -rf $(OBJS)
