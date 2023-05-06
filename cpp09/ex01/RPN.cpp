@@ -33,7 +33,7 @@ int	RPN::solve()
 		{
 			digit1 = stack.top();
 			stack.pop();
-			if (stack.empty() && i < equation.length() - 1)
+			if (stack.empty() && i < (int)equation.length() - 1)
 				std::cout << "Error: invalid equation\n", exit(1);
 			digit2 = stack.top();
 			stack.pop();
@@ -44,7 +44,7 @@ int	RPN::solve()
 			if (equation[i] == '+')
 				stack.push(digit1 + digit2);
 			if (equation[i] == '-')
-				stack.push(digit2 - digit1);
+				stack.push(digit1 - digit2);
 		}
 	}
 	return (stack.top());
