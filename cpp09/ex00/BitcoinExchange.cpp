@@ -80,12 +80,36 @@ std::string	BitcoinExchange::find_closest_date(std::string from_date)
 	return (date);
 }
 
+int	BitcoinExchange::is_out_of_bound(std::string date)
+{
+	int							find;
+	std::vector<std::string>	split;
+	std::string					year;
+	std::string					month;
+	std::string					day;
+
+	// tokenize date in vector<string> split; by delimiter '-' and assign y/m/d
+	// year = ;
+	// month = ;
+	// day = ;
+	// is out of bond if..
+	// - year is lower/highest than lowest/highest date in db
+
+	// - year is = to lowest/highest db.year, month is </> than lowest/highest db.month
+
+	// - year is = to lowest/highest db.year, month is = to lowest/highest db.day, day is </> than lowest/highest db.day
+
+	return (0);
+}
+
 // display list
 void	BitcoinExchange::display_result()
 {
 	float			qty;
 	long			find;
+	int				oob;
 	std::string		line;
+	std::string		date;
 	std::ifstream 	intput_file(file);
 
 	std::getline(intput_file, line);
@@ -96,21 +120,34 @@ void	BitcoinExchange::display_result()
 			std::cout << "Error: bad input => " << line << std::endl;
 		else
 		{
+			date = line.substr(0, find - 1);
 			qty = stof(line.substr(find + 1, line.size() - find));
 			if (qty < 0)
 				std::cout << "Error: not a positive number.\n";
 			else if (qty > 1000)
 				std::cout << "Error: too large a number.\n";
+			// check if date is out of bound and find if its higher or lower than the range
+			else if ((oob = is_out_of_bound(date))) {
+				// lower date
+				if (oob == 1)
+					;
+				// higher date
+				if (oob == 2)
+					;
+				// bad input
+				if (oob == 2)
+					std::cout << "Error: bad input => " << line << std::endl;;
+			}
 			// date is part of data_base
-			else if (data_base.count(line.substr(0, find - 1)))
-				std::cout << line.substr(0, find - 1) << " => " << qty << " = "\
-					<< qty * data_base[line.substr(0, find - 1)] << std::endl;
+			else if (data_base.count(date))
+				std::cout << date << " => " << qty << " = "\
+					<< qty * data_base[date] << std::endl;
 			// date is not part of data_base
-			else if (!data_base.count(line.substr(0, find - 1)))
+			else if (!data_base.count(date))
 			{
 				std::cout << line.substr(0, find - 1) << " => " << qty << " = "\
-					<< qty * data_base[find_closest_date(line.substr(0, find - 1))] << std::endl;
-				data_base.erase(line.substr(0, find - 1));
+					<< qty * data_base[find_closest_date(date)] << std::endl;
+				data_base.erase(date);
 			}
 		}
 	}
