@@ -1,19 +1,41 @@
 #include "BitcoinExchange.hpp"
 
+static	std::vector<std::string> split(std::string str, char del)
+{
+	int							i;
+	size_t						pos;
+	std::vector<std::string>	split;
+
+	i = -1;
+	pos = 0;
+	while (++i < 3) {
+		pos = str.find(del);
+    	split.push_back(str.substr(0, pos));
+    	str.erase(0, pos + 1);
+	}
+	return (split);
+}
+
 // constructor
 BitcoinExchange::BitcoinExchange(std::string arg)
 {
+	int				i;
 	int				find;
 	std::string		line;
 	std::ifstream 	input_file(arg);
 	std::ifstream 	data_base_file("data.csv");
 
+	i = 0;
 	this->file = arg;
 	if(input_file.fail())
 		std::cout << "Error: could not open file\n";
 	std::getline(data_base_file, line);
 	while (std::getline(data_base_file, line))
 	{
+		if (line[0] != '\n')
+			i++;
+		if (i == 1)
+			lowest_db_date = line.substr(0, line.find(","));
 		find = line.find(",");
 		data_base.insert(std::pair<std::string, float>(line.substr(0, find),\
 			stof(line.substr(find + 1, line.size() - find))));
@@ -80,25 +102,26 @@ std::string	BitcoinExchange::find_closest_date(std::string from_date)
 	return (date);
 }
 
+
 int	BitcoinExchange::is_out_of_bound(std::string date)
 {
-	int							find;
-	std::vector<std::string>	split;
-	std::string					year;
-	std::string					month;
-	std::string					day;
+	std::vector<std::string>	ymd;
+	std::vector<std::string>	lowest_db_date_split;
 
-	// tokenize date in vector<string> split; by delimiter '-' and assign y/m/d
-	// year = ;
-	// month = ;
-	// day = ;
-	// is out of bond if.. (no need to check for lower since lower_date() won't hang)
-	// - year is lower than lowest date in db
-
-	// - year is = to lowest db.year, month is < than lowest db.month
-
-	// - year is = to lowest db.year, month is = to lowest db.day, day is < than lowest db.day
-
+	ymd = split(date, '-');
+	lowest_db_date_split = split(lowest_db_date, '-');
+	// 	- year is lower than lowest year in db
+	if (atoi(ymd[0].c_str()) < atoi(lowest_db_date_split[0].c_str()))
+		return (1);
+	// 	- year is = to lowest db.year, month is < than lowest db.month
+	if (atoi(ymd[0].c_str()) == atoi(lowest_db_date_split[0].c_str())
+		&& atoi(ymd[1].c_str()) < atoi(lowest_db_date_split[1].c_str()))
+		return (1);
+	// 	- year is = to lowest db.year, month is = to lowest db.day, day is < than lowest db.day
+	if (atoi(ymd[0].c_str()) == atoi(lowest_db_date_split[0].c_str())
+		&& atoi(ymd[1].c_str()) == atoi(lowest_db_date_split[1].c_str())
+		&& atoi(ymd[2].c_str()) < atoi(lowest_db_date_split[2].c_str()))
+		return (1);
 	return (0);
 }
 
@@ -107,7 +130,6 @@ void	BitcoinExchange::display_result()
 {
 	float			qty;
 	long			find;
-	int				oob;
 	std::string		line;
 	std::string		date;
 	std::ifstream 	intput_file(file);
@@ -126,18 +148,10 @@ void	BitcoinExchange::display_result()
 				std::cout << "Error: not a positive number.\n";
 			else if (qty > 1000)
 				std::cout << "Error: too large a number.\n";
-			// check if date is out of bound and find if its higher or lower than the range
-			else if ((oob = is_out_of_bound(date))) {
-				// lower date
-				if (oob == 1)
-					;
-				// higher date
-				if (oob == 2)
-					;
-				// bad input
-				if (oob == 2)
-					std::cout << "Error: bad input => " << line << std::endl;;
-			}
+			// check if date is out of bound and print qty * db[lowest_db_date]
+			else if (is_out_of_bound(date))
+				std::cout << date << " => " << qty << " = "\
+				<< qty * data_base[lowest_db_date] << std::endl;
 			// date is part of data_base
 			else if (data_base.count(date))
 				std::cout << date << " => " << qty << " = "\
