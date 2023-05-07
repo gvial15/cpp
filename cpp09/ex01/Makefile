@@ -1,6 +1,6 @@
 SRCS =	main.cpp RPN.cpp
 
-OBJS = $(SRCS:%cpp=%o)
+OBJS = $(SRCS:.cpp=.o)
 
 NAME = RPN
 
@@ -12,6 +12,9 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+
+.cpp.o: $(SRCS)
+	$(CC) $(CFLAGS) -c $(SRCS)
 
 clean:
 	rm -rf $(OBJS)
