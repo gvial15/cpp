@@ -31,30 +31,38 @@ int	RPN::solve()
 			stack.push(atoi(&equation[i]));
 		else if (equation[i] != ' ')
 		{
+			std::cout << "stack.top(): " << stack.top() << "\n";
 			digit1 = stack.top();
+			printf("digit1: %i, ", digit1);
 			stack.pop();
 			if (stack.empty() && i < (int)equation.length() - 1)
 				std::cout << "Error: invalid equation\n", exit(1);
 			digit2 = stack.top();
+			printf("digit2: %i\n", digit2);
 			stack.pop();
 			if (equation[i] == '*')
 			{
-				printf("%i * %i\n", digit1, digit2);
+				printf("%i * %i = ", digit1, digit2);
+				printf("%i\n", digit1 * digit2);
 				stack.push(digit1 * digit2);
 			}
-			if (equation[i] == '/')
+			else if (equation[i] == '/')
 			{
-				printf("%i / %i\n", digit1, digit2);
+				printf("%i / %i = ", digit1, digit2);
+				printf("%i\n", digit1 / digit2);
 				stack.push(digit1 / digit2);
 			}
-			if (equation[i] == '+')
+			else if (equation[i] == '+')
 			{
-				printf("%i + %i\n", digit1, digit2);
+				printf("%i + %i = ", digit1, digit2);
+				printf("%i\n", digit1 + digit2);
 				stack.push(digit1 + digit2);
+				std::cout << "here: " << stack.top() << "\n";
 			}
-			if (equation[i] == '-')
+			else if (equation[i] == '-')
 			{
-				printf("%i - %i\n", digit1, digit2);
+				printf("%i - %i = ", digit1, digit2);
+				printf("%i\n", digit1 - digit2);
 				stack.push(digit1 - digit2);
 			}
 		}
