@@ -92,12 +92,12 @@ int	BitcoinExchange::is_out_of_bound(std::string date)
 	// year = ;
 	// month = ;
 	// day = ;
-	// is out of bond if..
-	// - year is lower/highest than lowest/highest date in db
+	// is out of bond if.. (no need to check for lower since lower_date() won't hang)
+	// - year is lower than lowest date in db
 
-	// - year is = to lowest/highest db.year, month is </> than lowest/highest db.month
+	// - year is = to lowest db.year, month is < than lowest db.month
 
-	// - year is = to lowest/highest db.year, month is = to lowest/highest db.day, day is </> than lowest/highest db.day
+	// - year is = to lowest db.year, month is = to lowest db.day, day is < than lowest db.day
 
 	return (0);
 }
