@@ -102,7 +102,7 @@ std::string	BitcoinExchange::find_closest_date(std::string from_date)
 	return (date);
 }
 
-
+// find if input date is lower than lowest db date
 int	BitcoinExchange::is_out_of_bound(std::string date)
 {
 	std::vector<std::string>	ymd;

@@ -102,6 +102,8 @@ void	PmergeMe::sort_and_display_data()
 	std::vector<int>::iterator vec_i;
 	std::deque<int>::iterator deque_i;
 
+	// *******include "data-management" time as pdf requires********
+
 
 	// before
 	std::cout << "Before: ";
