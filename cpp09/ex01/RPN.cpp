@@ -27,11 +27,16 @@ int	RPN::solve()
 	i = -1;
 	while (equation[++i])
 	{
+		// If the symbol is a number, push it onto the stack. 
 		if (std::isdigit(equation[i]))
 			stack.push(atoi(&equation[i]));
+		// If the symbol is an operator, pop the top two values from the stack,
+		// apply the operator to those values, and push the result back onto the stack.
 		else if (equation[i] != ' ')
 		{
-			std::cout << "stack.top(): " << stack.top() << "\n";
+			// stack top isn't the same anymore because it iterate once and push
+			// another number in the stack before coming back in this condition
+			std::cout << "stack.top() at top: " << stack.top() << "\n";
 			digit1 = stack.top();
 			printf("digit1: %i, ", digit1);
 			stack.pop();
@@ -57,7 +62,6 @@ int	RPN::solve()
 				printf("%i + %i = ", digit1, digit2);
 				printf("%i\n", digit1 + digit2);
 				stack.push(digit1 + digit2);
-				std::cout << "here: " << stack.top() << "\n";
 			}
 			else if (equation[i] == '-')
 			{
@@ -65,6 +69,7 @@ int	RPN::solve()
 				printf("%i\n", digit1 - digit2);
 				stack.push(digit1 - digit2);
 			}
+			std::cout << "stack_top() at bottom of while(): " << stack.top() << "\n";
 		}
 	}
 	return (stack.top());
