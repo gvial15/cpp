@@ -16,7 +16,15 @@ RPN::RPN(std::string arg)
 // destructor
 RPN::~RPN() {}
 
+// ******** TODO:
+//			- error check for 1 digit number only
+//			- fix the logic error commented in the loop
+
 // solve equation
+// loop in the equation and..
+// 	- If the symbol is a number, push it onto the stack.
+// 	- If the symbol is an operator, pop the top two values from the stack,
+// 	  apply the operator to those values, and push the result back onto the stack.
 int	RPN::solve()
 {
 	int				i;
@@ -27,15 +35,13 @@ int	RPN::solve()
 	i = -1;
 	while (equation[++i])
 	{
-		// If the symbol is a number, push it onto the stack. 
 		if (std::isdigit(equation[i]))
 			stack.push(atoi(&equation[i]));
-		// If the symbol is an operator, pop the top two values from the stack,
-		// apply the operator to those values, and push the result back onto the stack.
 		else if (equation[i] != ' ')
 		{
-			// stack top isn't the same anymore because it iterate once and push
-			// another number in the stack before coming back in this condition
+			// TODO: fix the logic issue there:
+			//  - stack.top() at top isn't the same anymore because it iterate once and push
+			// 	  another number in the stack before coming back in this condition.
 			std::cout << "stack.top() at top: " << stack.top() << "\n";
 			digit1 = stack.top();
 			printf("digit1: %i, ", digit1);
