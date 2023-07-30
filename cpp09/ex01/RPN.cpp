@@ -1,4 +1,6 @@
 #include "RPN.hpp"
+#include <cstddef>
+#include <string>
 
 // constructor
 RPN::RPN(std::string arg)
@@ -15,9 +17,6 @@ RPN::RPN(std::string arg)
 
 // destructor
 RPN::~RPN() {}
-
-// ******** TODO:
-//			- error check for 1 digit number only
 
 void print(std::stack<int> &s)
 {
@@ -36,66 +35,42 @@ void print(std::stack<int> &s)
 // solve equation
 int	RPN::solve()
 {
-	int				i;
+	size_t			i;
+	size_t			nextI;
 	int				digit1;
 	int				digit2;
-	int				result;
-	int				sign;
+	std::string		token;
 	std::stack<int>	stack;
 
-	result = 0;
-	sign = 0;
-	i = -1;
-	// ./RPN "8 9 * 9 - 9 - 9 - 4 - 1 +"
-	while (equation[++i])
+	i = 0;
+	while (i < equation.size())
 	{
-		if (std::isdigit(equation[i]))
-		{
-			stack.push(atoi(&equation[i]));
-			if (sign == 1)
-				stack.push(result);
-			sign = 0;
-		}
-		if (equation[i] == '+' || equation[i] == '-' || equation[i] == '*'
-			|| equation[i] == '/')
-		{
-			sign = 1;
-			if (stack.empty() && i < (int)equation.length() - 1)
-				std::cout << "Error: invalid equation\n", exit(1);
-			digit1 = stack.top();
-			stack.pop();
-			digit2 = stack.top();
-			stack.pop();
-			if (equation[i] == '*')
+		nextI = equation.find(' ', i);
+		if (nextI == std::string::npos)
+			nextI = equation.size();
+		token = equation.substr(i, nextI - i);
+		i = nextI + 1;
+		if (isdigit(token[0]) || (token[0] == '-' && token.length() > 1))
+            stack.push(stod(token));
+		else if (token == "-" || token == "+" || token == "*" || token == "/") {
+            digit2 = stack.top();
+            stack.pop();
+            digit1 = stack.top();
+            stack.pop();
+            if (token == "+")
+                stack.push(digit1 + digit2);
+            else if (token == "-")
+                stack.push(digit1 - digit2);
+            else if (token == "*")
+                stack.push(digit1 * digit2);
+            else if (token == "/")
+                stack.push(digit1 / digit2);
+            else
 			{
-				printf("%i * %i = ", digit1, digit2);
-				printf("%i\n", digit1 * digit2);
-				result  = (digit1 * digit2);
+                std::cerr << "Invalid operator: " << token << std::endl;
+                return 0;
 			}
-			else if (equation[i] == '/')
-			{
-				printf("%i / %i = ", digit1, digit2);
-				printf("%i\n", digit1 / digit2);
-				result = (digit1 / digit2);
-			}
-			else if (equation[i] == '+')
-			{
-				printf("%i + %i = ", digit1, digit2);
-				printf("%i\n", digit1 + digit2);
-				result = (digit1 + digit2);
-			}
-			else if (equation[i] == '-')
-			{
-				printf("%i - %i = ", digit1, digit2);
-				printf("%i\n", digit1 - digit2);
-				result = (digit1 - digit2);
-			}
-		}
+        }
 	}
-	if (stack.size() == 0)
-		return (result);
-	else if (stack.size() == 1)
-		return (stack.top());
-	else
-		std::cout << "Error: invalid equation\n", exit(1);
+	return (stack.top());
 }
