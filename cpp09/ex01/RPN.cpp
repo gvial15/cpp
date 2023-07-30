@@ -18,6 +18,8 @@ RPN::RPN(std::string arg)
 // destructor
 RPN::~RPN() {}
 
+
+// testing function
 void print(std::stack<int> &s)
 {
     if(s.empty())
@@ -67,7 +69,7 @@ int	RPN::solve()
                 stack.push(digit1 / digit2);
             else
 			{
-                std::cerr << "Invalid operator: " << token << std::endl;
+                std::cout << "Invalid operator: " << token << std::endl;
                 return 0;
 			}
         }
