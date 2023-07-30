@@ -1,3 +1,4 @@
+
 #include "RPN.hpp"
 #include <cstddef>
 #include <string>
@@ -5,14 +6,15 @@
 // constructor
 RPN::RPN(std::string arg)
 {
-	int	i;
-	
+	int		i;
+
 	equation = arg;
 	i = -1;
 	while (equation[++i])
-		if (!std::isdigit(equation[i]) && equation[i] != '+' && equation[i] != '-'
+		if ((!std::isdigit(equation[i]) && equation[i] != '+' && equation[i] != '-'
 			&& equation[i] != '*' && equation[i] != '/' && equation[i] != ' ')
-			std::cout << "Error: authorized characters are \"+-*/\" and (0-9)\n", exit(1);
+			|| (std::isdigit(equation[i]) && std::isdigit(equation[i + 1])))
+			std::cout << "Error: authorized characters are \"+-*/\" and (0-9)\n", exit(0);
 }
 
 // destructor
@@ -52,13 +54,18 @@ int	RPN::solve()
 			nextI = equation.size();
 		token = equation.substr(i, nextI - i);
 		i = nextI + 1;
-		if (isdigit(token[0]) || (token[0] == '-' && token.length() > 1))
+		if (isdigit(token[0]))
             stack.push(stod(token));
-		else if (token == "-" || token == "+" || token == "*" || token == "/") {
-            digit2 = stack.top();
-            stack.pop();
-            digit1 = stack.top();
-            stack.pop();
+		else if (token == "-" || token == "+" || token == "*" || token == "/")
+		{
+			if (stack.empty())
+					std::cout << "invalid equation\n", exit(0);
+			digit2 = stack.top();
+			stack.pop();
+			if (stack.empty())
+				std::cout << "invalid equation\n", exit(0);
+			digit1 = stack.top();
+			stack.pop();
             if (token == "+")
                 stack.push(digit1 + digit2);
             else if (token == "-")
@@ -67,12 +74,9 @@ int	RPN::solve()
                 stack.push(digit1 * digit2);
             else if (token == "/")
                 stack.push(digit1 / digit2);
-            else
-			{
-                std::cout << "Invalid operator: " << token << std::endl;
-                return 0;
-			}
         }
 	}
+	if (stack.size() != 1)
+		std::cout << "invalid equation\n", exit(0);
 	return (stack.top());
 }
