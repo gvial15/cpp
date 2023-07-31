@@ -26,7 +26,7 @@ PmergeMe::~PmergeMe() {}
 template<class C>
 void	PmergeMe::merge_insert_sort(C &array)
 {
-	typename C::iterator i;
+	
 }
 
 // sort the containers and display the times etc... as required by subject
@@ -37,10 +37,7 @@ void	PmergeMe::sort_and_display_data()
 	std::chrono::steady_clock::time_point t_start;
 	std::chrono::steady_clock::time_point t_end;
 	std::vector<int>::iterator vec_i;
-	std::deque<int>::iterator deque_i;
-
-//		   *** TODO:
-//				- include "data-management" time as pdf requires********  
+	std::deque<int>::iterator deque_i;  
 
 
 	// before
