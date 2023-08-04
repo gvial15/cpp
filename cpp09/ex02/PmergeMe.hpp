@@ -7,12 +7,10 @@ class PmergeMe {
 		PmergeMe(char **argv);
 		~PmergeMe();
 
-	template<class C>
-	void	insert_sort(C &array, int l, int r);
-	template<class C>
-	void	merge(C &array, int l, int m, int r);
-	template<class C>
-	void	merge_insert_sort(C &array, int l, int r, int threshold);
+	template<typename it>
+	void	insert_sort(it start, it end);
+	template<typename it>
+	void	merge_insert_sort(it begin, it end);
 	void	sort_and_display_data();
 
 	private:

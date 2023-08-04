@@ -23,73 +23,32 @@ PmergeMe::PmergeMe(char **argv)
 PmergeMe::~PmergeMe() {}
 
 // insert sort
-template<class C>
-void	PmergeMe::insert_sort(C &array, int l, int r)
+template<typename it>
+void	PmergeMe::insert_sort(it start, it end)
 {
-	int						tmp;
-	typename C::iterator	i;
-	typename C::iterator	ii;
-	typename C::iterator	prev;
+	it	i;
+	it	j;
 
-	if (l - 1 == -1)
-		i = array.begin();
-	else
-		i = array.begin() + l - 1;
-	prev = i;
-	while (i != array.begin() + r)
-	{
-		if (i != array.begin() && *i < *prev)
-		{
-			ii = i;
-			while (ii != array.begin() + l - 1 && *i < *--ii);
-			tmp = *i;
-			array.erase(i);
-			array.insert(++ii, tmp);
-		}
-		prev = i;
-		i++;
-	}
-}
-
-// merge sort
-template<class C>
-void	PmergeMe::merge(C &array, int l, int m, int r)
-{
-	int	tmp[r - l + 1], i, j, k;
-
-	i = l;
-	j = m + 1;
-	k = 0;
-	while (i <= m && j <= r)
-	{
-		if (array[i] <= array[j])
-			tmp[k] = array[i++];
-		else
-			tmp[k] = array[j++];
-		k++;
-	}
-	while (i <= m)
-		tmp[k++] = array[i++];
-	while (j <= r)
-		tmp[k++] = array[j++];
-	i = -1;
-	while (++i < k)
-		array[l + i] = tmp[i];
+	for (i = start; i != end; ++i)
+		for (j = i; j != start && *j < *(j - 1); --j)
+			std::iter_swap(j, j - 1);
 }
 
 // merge-insert sort
-template<class C>
-void	PmergeMe::merge_insert_sort(C &array, int l, int r, int threshold)
+template<typename it>
+void	PmergeMe::merge_insert_sort(it start, it end)
 {
-	if ( l < r)
+	it	middle;
+
+	if (end - start > 10) 
 	{
-		if (r - l + 1 < threshold)
-			insert_sort(array, l, r);
-		int	m = l + (r - l) / 2;
-		merge_insert_sort(array, l, m, threshold);
-		merge_insert_sort(array, m + 1, r, threshold);
-		merge(array, l, m, r);
+		middle = start + (end - start) / 2;
+		merge_insert_sort(start, middle);
+		merge_insert_sort(middle, end);
+		std::inplace_merge(start, middle, end);
 	}
+	else
+		insert_sort(start, end);
 }
 
 // sort the containers and display the times etc... as required by subject
@@ -100,10 +59,7 @@ void	PmergeMe::sort_and_display_data()
 	std::chrono::steady_clock::time_point t_start;
 	std::chrono::steady_clock::time_point t_end;
 	std::vector<int>::iterator vec_i;
-	std::deque<int>::iterator deque_i;
-
-//		   *** TODO:
-//				- include "data-management" time as pdf requires********  
+	std::deque<int>::iterator deque_i;  
 
 
 	// before
@@ -118,11 +74,11 @@ void	PmergeMe::sort_and_display_data()
 
 	// sort
 	t_start = std::chrono::high_resolution_clock::now();
-	merge_insert_sort(vec, 0, vec.size() - 1, 3);
+	merge_insert_sort(vec.begin(), vec.end());
 	t_end = std::chrono::high_resolution_clock::now();
 	vec_ms = std::chrono::duration<double, std::milli>(t_end-t_start).count();
 	t_start = std::chrono::high_resolution_clock::now();
-	merge_insert_sort(deque, 0, deque.size() - 1, 3);
+	merge_insert_sort(deque.begin(), deque.end());
 	t_end = std::chrono::high_resolution_clock::now();
 	deque_ms = std::chrono::duration<double, std::milli>(t_end-t_start).count();
 

@@ -20,22 +20,6 @@ RPN::RPN(std::string arg)
 // destructor
 RPN::~RPN() {}
 
-
-// testing function
-void print(std::stack<int> &s)
-{
-    if(s.empty())
-    {
-        std::cout << std::endl;
-        return;
-    }
-    int x= s.top();
-    s.pop();
-    print(s);
-    s.push(x);
-    std::cout << x << " ";
- }
-
 // solve equation
 int	RPN::solve()
 {
